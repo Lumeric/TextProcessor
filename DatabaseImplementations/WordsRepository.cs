@@ -16,7 +16,6 @@ namespace DatabaseImplementations
 			_wordsContext = wordsContext;
 		}
 
-
 		public async Task<List<Word>> GetAllAsync(Expression<Func<Word, bool>> condition)
 		{
 			return await _wordsContext.WordsSheet.Where(condition).ToListAsync();
@@ -34,7 +33,6 @@ namespace DatabaseImplementations
 				.ThenBy(word => word.Text)
 				.Take(limit)
 				.ToListAsync();
-
 		}
 
 		public Task UpdateRangeAsync(List<Word> items)
@@ -59,7 +57,6 @@ namespace DatabaseImplementations
 
 		public void Dispose()
 		{
-			// Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
 			Dispose(disposing: true);
 			GC.SuppressFinalize(this);
 		}

@@ -48,7 +48,6 @@ namespace UploaderBusinessLogic
 			}
 		}
 
-
 		private List<Word> CreateWordEntities(Dictionary<string, int> countedWords)
 		{
 			List<Word> wordEntities = new List<Word>();
