@@ -4,21 +4,21 @@ using Microsoft.Extensions.Configuration;
 
 namespace DatabaseImplementations
 {
-    public class WordsDbContextFactory : IDesignTimeDbContextFactory<WordsContext>
-    {
-        public WordsContext CreateDbContext(string[] args)
-        {
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json");
+	public class WordsDbContextFactory : IDesignTimeDbContextFactory<WordsContext>
+	{
+		public WordsContext CreateDbContext(string[] args)
+		{
+			var builder = new ConfigurationBuilder();
+			builder.SetBasePath(Directory.GetCurrentDirectory());
+			builder.AddJsonFile("appsettings.json");
 
-            var config = builder.Build();
-            string connectionString = config.GetConnectionString("DbConnection");
-            var optionsBuilder = new DbContextOptionsBuilder<WordsContext>();
+			var config = builder.Build();
+			string connectionString = config.GetConnectionString("DbConnection");
+			var optionsBuilder = new DbContextOptionsBuilder<WordsContext>();
 
-            optionsBuilder.UseSqlServer(connectionString);
+			optionsBuilder.UseSqlServer(connectionString);
 
-            return new WordsContext(optionsBuilder.Options);
-        }
-    }
+			return new WordsContext(optionsBuilder.Options);
+		}
+	}
 }

@@ -1,10 +1,6 @@
 ﻿using DatabaseInterfaces;
 using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DownloaderBusinessLogic
 {
@@ -25,7 +21,6 @@ namespace DownloaderBusinessLogic
 			Console.WriteLine(ENTER_FILTER_TEXT_MESSAGE);
 
 			string query = Console.ReadLine();
-
 			var records = await _repository.GetFirstOrderedAsync(word => word.Text.StartsWith(query), LIMIT_VALUE);
 
 			PrintToConsole(records);

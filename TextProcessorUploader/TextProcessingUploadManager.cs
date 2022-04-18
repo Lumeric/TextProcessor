@@ -1,36 +1,30 @@
-﻿using Entities;
-using DatabaseImplementations;
+﻿using DatabaseImplementations;
 using DatabaseInterfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Entities;
 using UploaderBusinessLogic;
 
 namespace TextProcessorUploader
 {
-    internal class TextProcessingUploadManager
-    {
-        private readonly IRepository<Word> _repository;
+	internal class TextProcessingUploadManager
+	{
+		private readonly IFileUploader _fileUploader;
 
-        private IFileUploader _fileUploader;
+		public TextProcessingUploadManager()
+		{
+			var contextFactory = new WordsDbContextFactory();
+			var context = contextFactory.CreateDbContext(null);
 
-        public TextProcessingUploadManager()
-        {
-            var contextFactory = new WordsDbContextFactory();
-            var context = contextFactory.CreateDbContext(null);
+			var reader = new FileReader();
+			var validator = new WordsValidator();
+			var wordManager = new WordManager();
 
-            // tempSolutionWithImplemetantionInitialization
-            var reader = new FileReader();
-            var validator = new FileValidator();
-            var wordManager = new WordManager();
+			IRepository<Word> repository = new WordsRepository(context);
+			_fileUploader = new FileUploader(reader, validator, wordManager, repository);
+		}
 
-            _repository = new WordsRepository(context);
-
-            _fileUploader = new FileUploader(reader, validator, wordManager, _repository);
-        }
-
-        public async Task Start()
-        {
-            await _fileUploader.UploadFile();
-        }
-    }
+		public async Task Start()
+		{
+			await _fileUploader.UploadFile();
+		}
+	}
 }

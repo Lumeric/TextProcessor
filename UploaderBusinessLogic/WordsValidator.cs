@@ -2,7 +2,7 @@
 
 namespace UploaderBusinessLogic
 {
-	public class FileValidator : IFileValidator
+	public class WordsValidator : IWordsValidator
 	{
 		private const string REGEX_PATTERN = @"^([a-zа-яё]{3,20})$";
 

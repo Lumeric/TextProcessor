@@ -9,42 +9,33 @@ namespace Uploader.Tests
 		[Test]
 		public void ValidateWords_ValidateIncorrectInput_ReturnsEmpty()
 		{
-			//Arrange
-			var validator = new FileValidator();
+			var validator = new WordsValidator();
 
-			//Action-
 			var result = validator.ValidateWords(CreateIncorrectInput());
 
-			//Assert
 			Assert.IsEmpty(result);
 		}
 
 		[Test]
 		public void ValidateWords_ValidateCorrectInput_ReturnsListCount()
 		{
-			//Arrange
-			var validator = new FileValidator();
+			var validator = new WordsValidator();
 
-			//Action-
 			var input = CreateCorrectInput();
 			var result = validator.ValidateWords(input);
 
-			//Assert
 			Assert.AreEqual(result.Count, input.Length);
 		}
 
 		[Test]
 		public void ValidateWords_ValidateIncorrectInput_ReturnsPartially()
 		{
-			//Arrange
-			var validator = new FileValidator();
+			var validator = new WordsValidator();
 
-			//Action-
 			var input = CreateMixedInput();
 			var expectedCount = CreateCorrectInput().Length;
 			var result = validator.ValidateWords(input);
 
-			//Assert
 			Assert.AreEqual(result.Count, expectedCount);
 		}
 
