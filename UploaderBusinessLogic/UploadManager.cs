@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace UploaderBusinessLogic
 {
-	public class FileUploader : IFileUploader
+	public class UploadManager : IUploadManager
 	{
 		private const string ENTER_FILE_PATH_MESSAGE = "Enter a file path.";
 
@@ -13,7 +13,7 @@ namespace UploaderBusinessLogic
 		private readonly IWordManager _wordManager;
 		private readonly IRepository<Word> _repository;
 
-		public FileUploader(IFileReader fileReader,
+		public UploadManager(IFileReader fileReader,
 			IWordsValidator fileValidator,
 			IWordManager wordManager,
 			IRepository<Word> repository)

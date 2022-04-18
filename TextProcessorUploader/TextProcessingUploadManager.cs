@@ -7,7 +7,7 @@ namespace TextProcessorUploader
 {
 	internal class TextProcessingUploadManager
 	{
-		private readonly IFileUploader _fileUploader;
+		private readonly IUploadManager _fileUploader;
 
 		public TextProcessingUploadManager()
 		{
@@ -19,7 +19,7 @@ namespace TextProcessorUploader
 			var wordManager = new WordManager();
 
 			IRepository<Word> repository = new WordsRepository(context);
-			_fileUploader = new FileUploader(reader, validator, wordManager, repository);
+			_fileUploader = new UploadManager(reader, validator, wordManager, repository);
 		}
 
 		public async Task Start()

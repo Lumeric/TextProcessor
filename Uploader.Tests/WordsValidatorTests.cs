@@ -4,7 +4,7 @@ using UploaderBusinessLogic;
 namespace Uploader.Tests
 {
 	[TestFixture]
-	public class FileValidatorTests
+	public class WordsValidatorTests
 	{
 		[Test]
 		public void ValidateWords_ValidateIncorrectInput_ReturnsEmpty()

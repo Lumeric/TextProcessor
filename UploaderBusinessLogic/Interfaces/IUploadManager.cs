@@ -1,6 +1,6 @@
 ﻿namespace UploaderBusinessLogic
 {
-	public interface IFileUploader
+	public interface IUploadManager
 	{
 		Task UploadFile();
 	}
